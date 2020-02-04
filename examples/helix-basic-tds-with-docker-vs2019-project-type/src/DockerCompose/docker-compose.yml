@@ -122,13 +122,7 @@ services:
 
   cm:
     image: ${REGISTRY}sitecore-xp-spe-standalone:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
-    #build:
-    # context: .\..\Project\BasicCompany\website
-    # dockerfile: .\..\Project\BasicCompany\website\dockerfile
-    # args:
-    #    BASE_IMAGE: sitecoreimages.azurecr.io/sitecore-xp-spe-standalone:9.3.0-windowsservercore-1903
     volumes:
-      - ${LICENSE_PATH}:C:\license
       - ..\..\Docker\ContainerScripts:C:\scripts
       - ..\..\Docker\data\cm\wwwroot:C:\src
       - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro

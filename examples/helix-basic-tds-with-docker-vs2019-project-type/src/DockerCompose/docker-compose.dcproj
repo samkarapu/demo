@@ -5,9 +5,7 @@
   <PropertyGroup>
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Windows</DockerTargetOS>
-    <DockerServiceName>cm</DockerServiceName>
-    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-  </PropertyGroup>
+   </PropertyGroup>
   <ItemGroup>
     <None Include=".env" />
     <None Include="docker-compose.override.yml">

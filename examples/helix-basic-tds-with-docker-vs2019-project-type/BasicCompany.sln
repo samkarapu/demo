@@ -51,6 +51,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Environment.Configuration", "src\Environment\Configuration\website\BasicCompany.Environment.Configuration.csproj", "{8C30DC76-A465-43E8-9672-165C6A690151}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Navigation", "Navigation", "{63263B56-2C23-4A24-B2FA-3786FE54877F}"
+	ProjectSection(SolutionItems) = preProject
+		src\Environment\Configuration\website\App_Config\Environment\Environment.Configuration.config = src\Environment\Configuration\website\App_Config\Environment\Environment.Configuration.config
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Feature.Navigation", "src\Feature\Navigation\website\BasicCompany.Feature.Navigation.csproj", "{AB5DF04A-43AA-4450-A4AD-D549A67C2E90}"
 EndProject
