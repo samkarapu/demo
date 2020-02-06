@@ -10,4 +10,4 @@ In order to start:
 5. Execute Set-LicenseEnvironmentVariable.ps1 script in our Docker folder(C:\Projects\Helix.Examples\examples\helix-basic-tds-with-docker-vs2019-project-type\Docker):
    .\Set-LicenseEnvironmentVariable.ps1  -Path C:\license\license.xml -PersistForCurrentUser
 6.  Set the Docker Compose project as StartUp Project and hit Docker Compose button :-)
-7. Run whales-names and update your host file, by adding basic-company to your cm instance.
+7. Run whales-names and update your host file, by adding basic-company to your cm instance. Don't forget to cancel whales-names ;)
