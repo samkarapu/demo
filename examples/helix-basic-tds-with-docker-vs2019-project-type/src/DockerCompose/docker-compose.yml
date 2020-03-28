@@ -3,7 +3,7 @@ version: '2.4'
 services:
 
   sql:
-    image: ${REGISTRY}sitecore-xp-spe-sqldev:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
+    image: ${REGISTRY}sitecore-xp-jss-sqldev:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
     volumes:
       - ..\..\Docker\data\sql:C:\Data
     mem_limit: 2GB
@@ -39,11 +39,14 @@ services:
       SITECORE_CONNECTIONSTRINGS_COLLECTION: Data Source=sql;Database=Sitecore.Xdb.Collection.ShardMapManager;User ID=sa;Password=${SQL_SA_PASSWORD}
       SITECORE_CONNECTIONSTRINGS_SOLRCORE: http://solr:8983/solr/sitecore_xdb
     depends_on:
-      - sql
-      - solr
+      sql:
+        condition: service_healthy
+      solr:
+        condition: service_started
 
   xconnect-automationengine:
     image: ${REGISTRY}sitecore-xp-xconnect-automationengine:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\worker\\Development.ps1"
     volumes:
       - ..\..\Docker\data\xconnect-automationengine:C:\worker\App_Data\logs
     mem_limit: 500MB
@@ -54,11 +57,14 @@ services:
       SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA: Data Source=sql;Database=Sitecore.ReferenceData;User ID=sa;Password=${SQL_SA_PASSWORD}
       SITECORE_CONNECTIONSTRINGS_MESSAGING: Data Source=sql;Database=Sitecore.Messaging;User ID=sa;Password=${SQL_SA_PASSWORD}
     depends_on:
-      - sql
-      - xconnect
+      sql:
+        condition: service_healthy
+      xconnect:
+        condition: service_started
 
   xconnect-indexworker:
     image: ${REGISTRY}sitecore-xp-xconnect-indexworker:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\worker\\Development.ps1"
     volumes:
       - ..\..\Docker\data\xconnect-indexworker:C:\worker\App_Data\logs
     mem_limit: 500MB
@@ -69,11 +75,14 @@ services:
       SITECORE_SITECORE:XCONNECT:SEARCHINDEXER:SERVICES:SOLR.SOLRREADERSETTINGS:OPTIONS:REQUIREHTTPS: 'false'
       SITECORE_SITECORE:XCONNECT:SEARCHINDEXER:SERVICES:SOLR.SOLRWRITERSETTINGS:OPTIONS:REQUIREHTTPS: 'false'
     depends_on:
-      - sql
-      - solr
+      sql:
+        condition: service_healthy
+      solr:
+        condition: service_started
 
   xconnect-processingengine:
     image: ${REGISTRY}sitecore-xp-xconnect-processingengine:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\worker\\Development.ps1"
     volumes:
       - ..\..\Docker\data\xconnect-processingengine:C:\worker\App_Data\logs
     mem_limit: 500MB
@@ -91,12 +100,14 @@ services:
       SITECORE_CONNECTIONSTRINGS_REPORTING: Data Source=sql;Database=Sitecore.Reporting;User ID=sa;Password=${SQL_SA_PASSWORD}
       SITECORE_SETTINGS:SERILOG:MINIMUMLEVEL:DEFAULT: Information
     depends_on:
-      - sql
-      - xconnect
+      sql:
+        condition: service_healthy
+      xconnect:
+        condition: service_started
 
   cd:
-    image: ${REGISTRY}sitecore-xp-spe-standalone:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
-    entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\tools\\entrypoints\\iis\\Development.ps1
+    image: ${REGISTRY}sitecore-xp-jss-cd:${SITECORE_VERSION}-windowsservercore-${WINDOWSSERVERCORE_VERSION}
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
     volumes:
       - ..\..\Docker\ContainerScripts:C:\scripts
     ports:
@@ -115,9 +126,12 @@ services:
       SITECORE_CONNECTIONSTRINGS_SITECORE.REPORTING.CLIENT: http://xconnect
       SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA.CLIENT: http://xconnect
     depends_on:
-      - sql
-      - solr
-      - xconnect
+      sql:
+        condition: service_healthy
+      solr:
+        condition: service_started
+      xconnect:
+        condition: service_started
 
 
   cm:
@@ -126,7 +140,7 @@ services:
       - ..\..\Docker\ContainerScripts:C:\scripts
       - ..\..\Docker\data\cm\wwwroot:C:\src
       - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
-    entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\scripts\\Custom-Tools-Entrypoints-IIS-Development.ps1
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
     ports:
       - "44001:80"
     environment:
@@ -154,6 +168,9 @@ services:
       SITECORE_APPSETTINGS_TELERIK.UPLOAD.CONFIGURATIONHASHKEY: ${TELERIK_ENCRYPTION_KEY}
       SITECORE_APPSETTINGS_TELERIK.WEB.UI.DIALOGPARAMETERSENCRYPTIONKEY: ${TELERIK_ENCRYPTION_KEY}
     depends_on:
-      - sql
-      - solr
-      - xconnect
+      sql:
+        condition: service_healthy
+      solr:
+        condition: service_started
+      xconnect:
+        condition: service_started
