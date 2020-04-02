@@ -6,7 +6,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'BasicCompany.sln'
+  solution: 'examples/helix-basic-tds-with-docker-vs2019-project-type/BasicCompany.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -35,7 +35,7 @@ steps:
 
 
 - task: CopyFiles@2
-  displayName: 'Copy automation tests'
+  displayName: 'Copy UI tests'
   inputs:
     SourceFolder: '$(Build.sourcesdirectory)/src/Project/BasicCompany/tests'
     Contents: '**'
