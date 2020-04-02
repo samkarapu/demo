@@ -44,7 +44,9 @@ steps:
     TargetFolder: '$(Build.artifactstagingdirectory)/UITests'
     flattenFolders: false
 
-- task: VSTest@2
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
