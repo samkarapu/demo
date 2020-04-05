@@ -18,9 +18,7 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     [Given(@"I am a website visitor")]
     public void GivenIAmAWebsiteVisitor()
     {
-      var b = _configuration;
-
-   
+      
       base.GoToPage(_configuration[Constants.EnvironmentVariableKeys.BaseUrl]);
     }
 
@@ -28,22 +26,19 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     [When(@"I navigate to the Home page")]
     public void WhenINavigateToTheHomePage()
     {
-      var element = _driver.FindElement(By.ClassName("content"));
-      element.Should().NotBeNull();
+      _driver.Navigate().GoToUrl($"{_configuration[Constants.EnvironmentVariableKeys.BaseUrl]}/en");
+      var element = _driver.FindElement(By.CssSelector("a.navbar-item.is-tab.is-active"));
+      element.Text.Should().Be("Home");
     }
 
     [Then(@"I expect to see promo cards")]
     public void ThenIExpectToSeePromoCards()
     {
-      var element = _driver.FindElement(By.ClassName("content"));
-      element.Should().NotBeNull();
+      var promoCards = _driver.FindElements(By.CssSelector("div.column.promo-column.graphQlPromoCard"));
+
+      promoCards.Count.Should().BeGreaterThan(0);
     }
 
-    //[AfterFeature()]
-    //public static void TearDownTests()
-    //{
-    //  BaseSteps.DisposeDriver();
-    //}
 
   }
 }
