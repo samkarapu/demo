@@ -97,10 +97,13 @@ namespace BasicCompany.Feature.BasicContent.UITests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Promo cards visible")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PromoCard")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PromoCard")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("CleanUp")]
         public virtual void PromoCardsVisible()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Promo cards visible", null, ((string[])(null)));
+            string[] tagsOfScenario = new string[] {
+                    "CleanUp"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Promo cards visible", null, new string[] {
+                        "CleanUp"});
 #line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

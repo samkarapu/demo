@@ -3,17 +3,20 @@ using BasicCompany.Foundation.Common.UITests.Infrastructure;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using BasicCompany.Foundation.Common.UITests.Services;
+using Microsoft.Extensions.Configuration;
 using TechTalk.SpecFlow;
 
 namespace BasicCompany.Foundation.Common.UITests.Steps
 {
+
   public class BaseSteps : TechTalk.SpecFlow.Steps
   {
     protected readonly ScenarioContext _scenarioContext;
     protected readonly FeatureContext _featureContext;
     protected static IWebDriver _driver;
     protected readonly WebDriverWait _wait;
+    protected readonly IConfiguration _configuration;
+
 
     protected BaseSteps(ScenarioContext scenarioContext, FeatureContext featureContext)
     {
@@ -21,7 +24,10 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
       _featureContext = featureContext ?? throw new ArgumentNullException(nameof(featureContext));
       _driver = _featureContext.SeleniumDriver(BrowserTypes.Chrome);
       _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+      _configuration = scenarioContext.ScenarioContainer.Resolve<IConfiguration>();
+
     }
+
 
 
     protected void GoToPage(string url)
@@ -36,32 +42,6 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
 
     }
 
-
-    private static ProcessService ProcessService => new ProcessService();
-
-    protected static void DisposeDriver()
-    {
-      if (_driver == null)
-        return;
-
-      _driver.Quit();
-      _driver.Dispose();
-
-      if (!System.Diagnostics.Debugger.IsAttached)
-        return;
-
-      if (_driver.GetType().Name != "ChromeDriver")
-        return;
-
-      try
-      {
-        ProcessService.KillProcessAndChildren("chromedriver.exe");
-      }
-      catch
-      {
-        // ignored
-      }
-    }
 
   }
 }

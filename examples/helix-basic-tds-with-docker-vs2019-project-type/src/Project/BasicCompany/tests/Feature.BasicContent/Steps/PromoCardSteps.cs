@@ -1,5 +1,4 @@
-﻿using System;
-using BasicCompany.Foundation.Common.UITests.Steps;
+﻿using BasicCompany.Foundation.Common.UITests.Steps;
 using FluentAssertions;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -18,7 +17,10 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     [Given(@"I am a website visitor")]
     public void GivenIAmAWebsiteVisitor()
     {
-      base.GoToPage("https://google.se");
+      var b = _configuration;
+
+   
+      base.GoToPage(_configuration["BaseUrl"]);
     }
 
    
@@ -36,11 +38,11 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
       element.Should().NotBeNull();
     }
 
-    [AfterFeature()]
-    public static void TearDownTests()
-    {
-      BaseSteps.DisposeDriver();
-    }
+    //[AfterFeature()]
+    //public static void TearDownTests()
+    //{
+    //  BaseSteps.DisposeDriver();
+    //}
 
   }
 }

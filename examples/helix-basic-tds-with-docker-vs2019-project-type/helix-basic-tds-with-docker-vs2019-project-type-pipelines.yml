@@ -47,15 +47,6 @@ steps:
     modifyOutputPath: false
 
 
-- task: CopyFiles@2
-  displayName: 'Copy UI tests'
-  inputs:
-    SourceFolder: '$(Build.sourcesdirectory)/examples/helix-basic-tds-with-docker-vs2019-project-type/src/Project/BasicCompany/tests'
-    Contents: '**'
-    TargetFolder: '$(Build.artifactstagingdirectory)/UITests'
-    flattenFolders: false
-
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:

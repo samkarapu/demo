@@ -1,0 +1,6 @@
+{
+  "stepAssemblies": [
+    { "assembly": "BasicCompany.Foundation.Common.UITests" }
+  ],
+  "BaseUrl": "https://google.com"
+}

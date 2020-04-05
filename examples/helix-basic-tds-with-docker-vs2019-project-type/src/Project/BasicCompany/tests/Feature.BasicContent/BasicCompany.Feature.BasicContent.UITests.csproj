@@ -25,4 +25,12 @@
     <ProjectReference Include="..\Foundation.Common\BasicCompany.Foundation.Common.UITests.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\..\..\..\..\specflow.json">
+      <Link>specflow.json</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
