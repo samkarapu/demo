@@ -28,7 +28,7 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     {
       _driver.Navigate().GoToUrl($"{_configuration[Constants.EnvironmentVariableKeys.BaseUrl]}/en");
       var element = _driver.FindElement(By.CssSelector("a.navbar-item.is-tab.is-active"));
-      element.Text.Should().Be("Home");
+      element.Text.Trim().Should().Be("Home");
     }
 
     [Then(@"I expect to see promo cards")]
