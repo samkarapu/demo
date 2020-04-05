@@ -12,7 +12,7 @@ namespace BasicCompany.Foundation.Common.UITests.Extensions
 {
   public static class SpecFlowExtensions
   {
-    public static IWebDriver SeleniumDriver(this FeatureContext featureContext, BrowserTypes browser)
+    public static IWebDriver SeleniumDriver(this FeatureContext featureContext, string browser)
     {
       if (featureContext == null)
         throw new ArgumentNullException(nameof(featureContext));
@@ -20,9 +20,9 @@ namespace BasicCompany.Foundation.Common.UITests.Extensions
       if (featureContext.ContainsKey(typeof(IWebDriver).FullName ?? throw new InvalidOperationException()))
         return featureContext.Get<IWebDriver>();
 
-      //System.Enum.TryParse(BaseSettings.BrowserType, true, out BrowserTypes browserType);
+      System.Enum.TryParse(browser, true, out BrowserTypes browserType);
 
-      return CreateSeleniumDriver(featureContext, browser);
+      return CreateSeleniumDriver(featureContext, browserType);
     }
 
     private static IWebDriver CreateSeleniumDriver(this SpecFlowContext specFlowContext, BrowserTypes browser)

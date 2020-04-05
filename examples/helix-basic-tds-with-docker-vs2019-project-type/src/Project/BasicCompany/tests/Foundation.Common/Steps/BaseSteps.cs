@@ -1,9 +1,8 @@
 ﻿using BasicCompany.Foundation.Common.UITests.Extensions;
-using BasicCompany.Foundation.Common.UITests.Infrastructure;
+using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using Microsoft.Extensions.Configuration;
 using TechTalk.SpecFlow;
 
 namespace BasicCompany.Foundation.Common.UITests.Steps
@@ -22,10 +21,9 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
     {
       _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
       _featureContext = featureContext ?? throw new ArgumentNullException(nameof(featureContext));
-      _driver = _featureContext.SeleniumDriver(BrowserTypes.Chrome);
-      _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
       _configuration = scenarioContext.ScenarioContainer.Resolve<IConfiguration>();
-
+      _driver = _featureContext.SeleniumDriver(_configuration[Constants.EnvironmentVariableKeys.Browser]);
+      _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
     }
 
 

@@ -1,4 +1,5 @@
-﻿using BasicCompany.Foundation.Common.UITests.Steps;
+﻿using BasicCompany.Foundation.Common.UITests;
+using BasicCompany.Foundation.Common.UITests.Steps;
 using FluentAssertions;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -20,7 +21,7 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
       var b = _configuration;
 
    
-      base.GoToPage(_configuration["BaseUrl"]);
+      base.GoToPage(_configuration[Constants.EnvironmentVariableKeys.BaseUrl]);
     }
 
    

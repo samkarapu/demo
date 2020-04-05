@@ -59,24 +59,14 @@ namespace BasicCompany.Foundation.Common.UITests.Infrastructure
       {
 
         config = new ConfigurationBuilder()
-          .SetBasePath(Directory.GetCurrentDirectory()) // requires Microsoft.Extensions.Configuration.Json
-          .AddJsonFile("specflow.json", optional: false, reloadOnChange: true) // requires Microsoft.Extensions.Configuration.Json
-          .AddEnvironmentVariables() // requires Microsoft.Extensions.Configuration.EnvironmentVariables
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile("specflow.json", optional: false, reloadOnChange: true) 
+          .AddEnvironmentVariables() 
           .Build();
-        
       }
 
       _scenarioContext.ScenarioContainer.RegisterInstanceAs<IConfiguration>(config);
 
-
-      //if (config == null)
-      //{
-      //  config = new ConfigurationBuilder(). SetBasePath(Directory.GetCurrentDirectory())
-      //    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-      //    .Build();
-      //}
-
-      //container.RegisterInstanceAs<IConfiguration>(config);
     }
 
     [AfterScenario()]

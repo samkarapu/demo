@@ -2,5 +2,6 @@
   "stepAssemblies": [
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
-  "BaseUrl": "https://google.com"
+  "BaseUrl": "https://google.com",
+  "Browser": "Chrome"
 }
