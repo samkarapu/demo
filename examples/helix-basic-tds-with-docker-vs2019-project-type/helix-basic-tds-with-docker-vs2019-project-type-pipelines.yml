@@ -36,6 +36,17 @@ steps:
     codeCoverageEnabled: true
 
 
+- task: DotNetCoreCLI@2
+  displayName: Publish UI Tests
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: '**/*UITests.csproj'
+    arguments: '--configuration Release -o $(build.artifactstagingdirectory)/PublishedUITests'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+
 - task: CopyFiles@2
   displayName: 'Copy UI tests'
   inputs:

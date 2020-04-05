@@ -1,5 +1,7 @@
 ﻿using System;
 using BasicCompany.Foundation.Common.UITests.Steps;
+using FluentAssertions;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace BasicCompany.Feature.BasicContent.UITests.Steps
@@ -23,13 +25,15 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     [When(@"I navigate to the Home page")]
     public void WhenINavigateToTheHomePage()
     {
-      ScenarioContext.Current.Pending();
+      var element = _driver.FindElement(By.ClassName("content"));
+      element.Should().NotBeNull();
     }
 
     [Then(@"I expect to see promo cards")]
     public void ThenIExpectToSeePromoCards()
     {
-      ScenarioContext.Current.Pending();
+      var element = _driver.FindElement(By.ClassName("content"));
+      element.Should().NotBeNull();
     }
 
     [AfterFeature()]
