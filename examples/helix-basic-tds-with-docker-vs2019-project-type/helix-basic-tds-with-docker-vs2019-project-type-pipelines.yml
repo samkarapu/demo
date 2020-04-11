@@ -1,0 +1,56 @@
+
+trigger:
+- master
+- feature/UItests
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: 'examples/helix-basic-tds-with-docker-vs2019-project-type/BasicCompany.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '$(solution)'
+    feedsToUse: 'config'
+
+- task: VSBuild@1
+  displayName: 'Build solution'
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  displayName: Run unit tests
+  inputs:
+    testSelector: testAssemblies
+    testAssemblyVer2: | 
+     **\*Tests.dll
+     !**\*UITests.dll
+    runInParallel: true
+    codeCoverageEnabled: true
+
+
+- task: DotNetCoreCLI@2
+  displayName: Publish UI Tests
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: '**/*UITests.csproj'
+    arguments: '--configuration Release -o $(build.artifactstagingdirectory)/PublishedUITests'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()

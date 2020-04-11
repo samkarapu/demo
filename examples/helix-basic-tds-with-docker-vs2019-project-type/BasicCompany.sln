@@ -107,6 +107,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphQL", "GraphQL", "{CE93
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Foundation.GraphQL", "src\Foundation\GraphQL\website\BasicCompany.Foundation.GraphQL.csproj", "{E9B666BD-EE8E-4449-95F0-D0B53B2AEA0D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{574B0E95-9089-42BF-AD71-40211AE5082A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Foundation.Common.UITests", "src\Project\BasicCompany\tests\Foundation.Common\BasicCompany.Foundation.Common.UITests.csproj", "{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Feature.BasicContent.UITests", "src\Project\BasicCompany\tests\Feature.BasicContent\BasicCompany.Feature.BasicContent.UITests.csproj", "{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{032813C4-8DC6-448E-86F7-1A4625B93F07}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		helix-basic-tds-with-docker-vs2019-project-type-pipelines.yml = helix-basic-tds-with-docker-vs2019-project-type-pipelines.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Feature.Navigation.UITests", "src\Project\BasicCompany\tests\Feature.Navigation\BasicCompany.Feature.Navigation.UITests.csproj", "{F2CF1160-B927-4785-BF3C-25D1E505FF74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -199,6 +213,18 @@ Global
 		{E9B666BD-EE8E-4449-95F0-D0B53B2AEA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9B666BD-EE8E-4449-95F0-D0B53B2AEA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9B666BD-EE8E-4449-95F0-D0B53B2AEA0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2CF1160-B927-4785-BF3C-25D1E505FF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CF1160-B927-4785-BF3C-25D1E505FF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2CF1160-B927-4785-BF3C-25D1E505FF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2CF1160-B927-4785-BF3C-25D1E505FF74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,6 +262,10 @@ Global
 		{E7832A11-26EC-4AB3-99D8-4DB5D9C689EB} = {34BFA474-D7DF-4C7C-BA5C-4D0102262769}
 		{CE93D2E5-C7D7-4FBE-81C4-F0F3C0CA6A46} = {4BB46BDD-D211-40D6-80BA-7891098A3977}
 		{E9B666BD-EE8E-4449-95F0-D0B53B2AEA0D} = {CE93D2E5-C7D7-4FBE-81C4-F0F3C0CA6A46}
+		{574B0E95-9089-42BF-AD71-40211AE5082A} = {FF8A384B-16D9-4102-9EF7-5D1121DECCC8}
+		{EACAFEF0-A7F3-49E7-A7E7-248B19A5FE77} = {574B0E95-9089-42BF-AD71-40211AE5082A}
+		{B5DE9921-EA8B-4545-8DD8-9FDDC9A21139} = {574B0E95-9089-42BF-AD71-40211AE5082A}
+		{F2CF1160-B927-4785-BF3C-25D1E505FF74} = {574B0E95-9089-42BF-AD71-40211AE5082A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD966AE4-FC31-46FF-BB0A-5A19D03078D3}
