@@ -30,7 +30,7 @@ namespace BasicCompany.Foundation.Common.UITests.Infrastructure
         config = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())
           .AddJsonFile("specflow.json", optional: false, reloadOnChange: true)
-          .AddEnvironmentVariables()
+          //.AddEnvironmentVariables()
           .Build();
       }
 

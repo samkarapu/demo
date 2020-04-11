@@ -18,8 +18,7 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     [Given(@"I am a website visitor")]
     public void GivenIAmAWebsiteVisitor()
     {
-      
-      base.GoToPage(_configuration[Constants.EnvironmentVariableKeys.BaseUrl]);
+      base.SetUrl(_configuration[Constants.EnvironmentVariableKeys.BaseUrl]);
     }
 
    
@@ -35,8 +34,7 @@ namespace BasicCompany.Feature.BasicContent.UITests.Steps
     public void ThenIExpectToSeePromoCards()
     {
       var promoCards = _driver.FindElements(By.CssSelector("div.column.promo-column.graphQlPromoCard"));
-
-      promoCards.Count.Should().BeGreaterThan(0);
+      promoCards.Count.Should().Be(5);
     }
 
 

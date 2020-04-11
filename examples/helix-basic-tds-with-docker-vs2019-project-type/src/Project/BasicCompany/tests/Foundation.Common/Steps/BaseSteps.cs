@@ -28,13 +28,13 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
 
 
 
-    protected void GoToPage(string url)
+    protected void SetUrl(string url)
     {
       Console.WriteLine($"Navigates to url: {url}");
 
       //Verify  
       if (_driver.Url != url)
-        _driver.Navigate().GoToUrl(url);
+        _driver.Url = url;
 
       _driver.Manage().Window.Maximize();
 

@@ -2,6 +2,6 @@
   "stepAssemblies": [
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
-  "BaseUrl": "https://e9074233.ngrok.io/",
+  "BaseUrl": "http://localhost:44001/",
   "Browser": "Chrome"
 }
