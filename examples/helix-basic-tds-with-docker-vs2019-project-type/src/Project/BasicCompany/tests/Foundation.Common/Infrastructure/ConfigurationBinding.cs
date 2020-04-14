@@ -7,7 +7,7 @@ namespace BasicCompany.Foundation.Common.UITests.Infrastructure
 {
 
   [Binding]
-  public  class ConfigurationBinding
+  public class ConfigurationBinding
   {
     private readonly ScenarioContext _scenarioContext;
 
@@ -18,25 +18,51 @@ namespace BasicCompany.Foundation.Common.UITests.Infrastructure
       _scenarioContext = scenarioContext;
     }
 
-  
+
 
     [BeforeScenario()]
     public void RegisterConfiguration()
     {
 
       if (config == null)
-      {
-
-        config = new ConfigurationBuilder()
-          .SetBasePath(Directory.GetCurrentDirectory())
-          .AddJsonFile("specflow.json", optional: false, reloadOnChange: true)
-          //.AddEnvironmentVariables()
-          .Build();
-      }
-
+        config = GetConfiguration();
+      
       _scenarioContext.ScenarioContainer.RegisterInstanceAs<IConfiguration>(config);
 
     }
+
+    private IConfiguration GetConfiguration()
+    {
+
+      var configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory());
+
+#if DEBUG
+      configuration.AddEnvironmentVariables();
+      configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
+#else
+      configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
+     configuration.AddEnvironmentVariables();
+#endif
+
+      ////If debug then we will use specflow.json variables
+      //if (System.Diagnostics.Debugger.IsAttached)
+      //{
+      //  configuration.AddEnvironmentVariables();
+      //  configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
+      //}
+      //else
+      //{
+      //  configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
+      //  configuration.AddEnvironmentVariables();
+      //}
+
+      return configuration.Build();
+
+    
+
+    }
+
 
     //[AfterScenario()]
     //public void AfterScenario()
