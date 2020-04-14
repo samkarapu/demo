@@ -22,8 +22,6 @@ steps:
 
 - task: VSBuild@1
   displayName: 'Build solution'
-  env:
-    MSBUILDSINGLELOADCONTEXT: 1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
@@ -42,6 +40,8 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: Publish UI Tests
+  env:
+    MSBUILDSINGLELOADCONTEXT: 1
   inputs:
     command: publish
     publishWebProjects: false
