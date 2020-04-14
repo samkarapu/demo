@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 
 namespace BasicCompany.Foundation.Common.UITests.Steps
 {
-
+  [Binding]
   public class BaseSteps : TechTalk.SpecFlow.Steps
   {
     protected readonly ScenarioContext _scenarioContext;
@@ -26,8 +26,7 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
       _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
     }
 
-
-
+    
     protected void SetUrl(string url)
     {
       Console.WriteLine($"Navigates to url: {url}");
