@@ -5,12 +5,13 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
+using OpenQA.Selenium.Support.UI;
 using System;
 using TechTalk.SpecFlow;
 
 namespace BasicCompany.Foundation.Common.UITests.Extensions
 {
-  public static class SpecFlowExtensions
+  public static class SeleniumExtensions
   {
     public static IWebDriver SeleniumDriver(this FeatureContext featureContext, string browser)
     {
@@ -24,6 +25,17 @@ namespace BasicCompany.Foundation.Common.UITests.Extensions
 
       return CreateSeleniumDriver(featureContext, browserType);
     }
+
+    public static IWebElement WaitUntilElementIsPresent(this IWebDriver driver, By selector, int timeoutInSeconds)
+    {
+
+      WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+      wait.Until<IWebElement>((d) => d.FindElement(selector));
+
+      return driver.FindElement(selector);
+
+    }
+
 
     private static IWebDriver CreateSeleniumDriver(this SpecFlowContext specFlowContext, BrowserTypes browser)
     {

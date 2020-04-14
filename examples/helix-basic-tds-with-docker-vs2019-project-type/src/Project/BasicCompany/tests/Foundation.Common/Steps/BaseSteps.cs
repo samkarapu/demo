@@ -39,6 +39,11 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
 
     }
 
+    protected void Wait(double waitTime)
+    {
+      DateTime now = DateTime.Now;
+      _wait.Until(arg => (DateTime.Now - now).TotalSeconds > waitTime);
+    }
 
   }
 }
