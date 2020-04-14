@@ -22,6 +22,8 @@ steps:
 
 - task: VSBuild@1
   displayName: 'Build solution'
+  env:
+    MSBUILDSINGLELOADCONTEXT: 1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
