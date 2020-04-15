@@ -2,6 +2,9 @@
   "stepAssemblies": [
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
-  "BaseUrl": "https://f10ff14f.ngrok.io/",
-  "Browser": "Firefox"
+  "BaseUrl": "http://localhost:44001/",
+  "Browser": "Edge",
+  "EdgeWebDriver": "C:\\Slask\\sss",
+  "EdgeBinaryLocation": "C:\\Program Files (x86)\\Microsoft\\Edge Dev\\Application\\msedge.exe"
+
 }

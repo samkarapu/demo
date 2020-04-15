@@ -22,7 +22,7 @@ namespace BasicCompany.Foundation.Common.UITests.Steps
       _scenarioContext = scenarioContext ?? throw new ArgumentNullException(nameof(scenarioContext));
       _featureContext = featureContext ?? throw new ArgumentNullException(nameof(featureContext));
       _configuration = scenarioContext.ScenarioContainer.Resolve<IConfiguration>();
-      _driver = _featureContext.SeleniumDriver(_configuration[Constants.EnvironmentVariableKeys.Browser]);
+      _driver = _featureContext.SeleniumDriver(_configuration);
       _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
     }
 
