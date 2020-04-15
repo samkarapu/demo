@@ -42,24 +42,10 @@ namespace BasicCompany.Foundation.Common.UITests.Infrastructure
       configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
 #else
       configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
-     configuration.AddEnvironmentVariables();
+      configuration.AddEnvironmentVariables();
 #endif
 
-      ////If debug then we will use specflow.json variables
-      //if (System.Diagnostics.Debugger.IsAttached)
-      //{
-      //  configuration.AddEnvironmentVariables();
-      //  configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
-      //}
-      //else
-      //{
-      //  configuration.AddJsonFile("specflow.json", optional: false, reloadOnChange: true);
-      //  configuration.AddEnvironmentVariables();
-      //}
-
       return configuration.Build();
-
-    
 
     }
 

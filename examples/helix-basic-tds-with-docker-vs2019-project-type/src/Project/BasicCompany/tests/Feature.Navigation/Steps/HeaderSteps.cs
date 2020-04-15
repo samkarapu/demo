@@ -30,7 +30,7 @@ namespace BasicCompany.Feature.Navigation.UITests.Steps
 
       var navElement = elements.FirstOrDefault(el => el.Text.Trim().Equals(naveItem));
       navElement.Click();
-      Wait(2);
+      Wait(5);
     }
 
     [Then(@"I expect to be directed to the '(.*)' page")]

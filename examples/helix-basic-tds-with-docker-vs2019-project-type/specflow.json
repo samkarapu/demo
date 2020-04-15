@@ -2,6 +2,6 @@
   "stepAssemblies": [
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
-  "BaseUrl": "http://localhost:44001/",
+  "BaseUrl": "https://f10ff14f.ngrok.io/",
   "Browser": "Firefox"
 }
