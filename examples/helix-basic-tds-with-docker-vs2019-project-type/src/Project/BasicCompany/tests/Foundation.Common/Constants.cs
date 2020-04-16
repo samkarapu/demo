@@ -8,7 +8,7 @@
       public const string Browser = "Browser";
       public const string EdgeWebDriver = "EdgeWebDriver";
       public const string EdgeBinaryLocation = "EdgeBinaryLocation";
-      public const string InternetExporerVersion = "InternetExporerVersion";
+      public const string InternetExplorerVersion = "InternetExplorerVersion";
     }
   }
 }

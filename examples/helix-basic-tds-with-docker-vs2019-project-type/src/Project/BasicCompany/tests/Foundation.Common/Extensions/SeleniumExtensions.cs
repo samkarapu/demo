@@ -67,7 +67,7 @@ namespace BasicCompany.Foundation.Common.UITests.Extensions
 
           InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions()
           {
-            BrowserVersion = configuration[Constants.EnvironmentVariableKeys.InternetExporerVersion],
+            BrowserVersion = configuration[Constants.EnvironmentVariableKeys.InternetExplorerVersion],
             IgnoreZoomLevel = true
           }; 
 
