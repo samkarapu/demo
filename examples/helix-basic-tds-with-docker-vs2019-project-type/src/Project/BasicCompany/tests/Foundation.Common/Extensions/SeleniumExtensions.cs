@@ -50,8 +50,7 @@ namespace BasicCompany.Foundation.Common.UITests.Extensions
           EdgeOptions egdeOptions = new EdgeOptions
           {
             PageLoadStrategy = PageLoadStrategy.Normal,
-            UseChromium = true,
-            BinaryLocation = configuration[Constants.EnvironmentVariableKeys.EdgeBinaryLocation],
+            UseChromium = true
           };
 
           EdgeDriverService edgeDriverService = EdgeDriverService.CreateChromiumService(configuration[Constants.EnvironmentVariableKeys.EdgeWebDriver]);

@@ -3,9 +3,8 @@
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
   "BaseUrl": "http://localhost:44001/",
-  "Browser": "InternetExplorer",
-  "EdgeWebDriver": "C:\\Slask\\sss",
-  "EdgeBinaryLocation": "C:\\Program Files (x86)\\Microsoft\\Edge Dev\\Application\\msedge.exe",
-  "InternetExplorerVersion" :  "11"
+  "Browser": "Edge",
+  "EdgeWebDriver": "C:\\EdgeDrivers\\81.0.416.53",
+  "InternetExplorerVersion": "11"
 
 }
