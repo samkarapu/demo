@@ -46,7 +46,7 @@ steps:
     command: publish
     publishWebProjects: false
     projects: '**/*UITests.csproj'
-    arguments: '--configuration Release -o $(build.artifactstagingdirectory)/PublishedUITests'
+    arguments: '--configuration $(buildConfiguration) -o $(build.artifactstagingdirectory)/PublishedUITests'
     zipAfterPublish: false
     modifyOutputPath: false
 

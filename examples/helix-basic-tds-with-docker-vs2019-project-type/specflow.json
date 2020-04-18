@@ -3,7 +3,7 @@
     { "assembly": "BasicCompany.Foundation.Common.UITests" }
   ],
   "BaseUrl": "http://localhost:44001/",
-  "Browser": "Edge",
+  "Browser": "Firefox",
   "EdgeWebDriver": "C:\\EdgeDrivers\\81.0.416.53",
   "InternetExplorerVersion": "11"
 
