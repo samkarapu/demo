@@ -1,0 +1,36 @@
+trigger: none
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily check aks cluster upgrades
+  branches:
+    include:
+    - main
+
+variables:
+  - group: azure-auth-variables
+  - group: azure-keyvault-variables
+
+pool:
+  vmImage: "ubuntu-latest"
+steps:
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: $(azure_subscription_id)
+    KeyVaultName: $(azure_key_vault_name)
+    SecretsFilter: '*'
+    RunAsPreJob: true
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: $(azure_subscription_id)
+    scriptType: 'pscore'
+    scriptLocation: 'scriptPath'
+    scriptPath: 'pipelines/scripts/check-cluster-upgrades.ps1'
+    arguments: |
+      -InfrastructureId $(infrastructure-id) `
+      -AzureSubscriptionId $(azure_subscription_id) `
+      -AzureTenantId $(azure_tenant_id) `
+      -OpsGenieRESTApiUrl $(opsgenie-api-url) `
+      -OpsGenieRESTApiKey $(opsgenie-rest-api-key)
+  timeoutInMinutes: 30
+  displayName: Check cluster upgrades
